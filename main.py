@@ -7,6 +7,8 @@ import os
 from model_class import LinearRegressionModel
 
 
+from fastapi.middleware.cors import CORSMiddleware
+
 # -----------------------------
 # Create FastAPI application
 # -----------------------------
@@ -15,6 +17,15 @@ app = FastAPI(
     title="Student Performance ML API",
     description="ML API for predicting student exam scores",
     version="1.0.0"
+)
+
+# Enable CORS
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 
